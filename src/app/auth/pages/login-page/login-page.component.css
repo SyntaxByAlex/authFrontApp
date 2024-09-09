@@ -1,0 +1,31 @@
+.title {
+  font-size: 25px;
+}
+
+.form {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.form-item {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.no-account {
+  display: flex;
+  font-size: 12px;
+  column-gap: 10px;
+  justify-content: end;
+}
+
+.no-account a {
+  color: white;
+}
+
+.form-item label {
+  align-self: flex-start;
+}
