@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -14,10 +15,11 @@ export class LoginPageComponent {
 
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   public loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+    email: ['admin@admin.com', [Validators.required, Validators.email]],
+    password: ['12345678', [Validators.required, Validators.minLength(6)]]
   });
 
   public login(): void {
@@ -27,6 +29,7 @@ export class LoginPageComponent {
 
     this.authService.login(email, password).subscribe({
       next: res => {
+        this.router.navigateByUrl('/dashboard');
         console.log(res);
       },
       error: err => {
